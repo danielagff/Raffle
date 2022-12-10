@@ -1,7 +1,9 @@
 package com.rifa.Controller;
 
+import com.rifa.Model.DTO.LuckyTicketDTO;
 import com.rifa.Model.DTO.RaffleDTO;
 import com.rifa.Model.Raffle;
+import com.rifa.Service.ServicesInterfaces.ILuckyTicketService;
 import com.rifa.Service.ServicesInterfaces.IRaffleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +19,15 @@ public class RaffleController {
     private IRaffleService iRaffleService;
 
     @PostMapping("/create")
-    public String createRuffle(@RequestBody Raffle raffle)
+    public String createRuffle(@RequestBody RaffleDTO raffleDTO)
     {
-        return iRaffleService.createRaffles(raffle);
+        return iRaffleService.createRaffles(raffleDTO);
     }
 
     @GetMapping
     public ResponseEntity<List<RaffleDTO>> getAllRaffles() throws Exception {
         return ResponseEntity.ok(iRaffleService.findAllRaffles());
     }
+
+
 }

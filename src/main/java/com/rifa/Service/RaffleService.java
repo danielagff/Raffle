@@ -38,16 +38,17 @@ public class RaffleService implements IRaffleService {
      }
 
      @Override
-     public String createRaffles(Raffle raffle) {
+     public String createRaffles(RaffleDTO raffleDTO) {
           try
           {
-               if(iRaffleRepository.isAvailableRaffleName(raffle.getRaffleName()) >= 1)
+               if(iRaffleRepository.isAvailableRaffleName(raffleDTO.getRaffleName()) >= 1)
                {
                     return "This raffle name is Unavailable";
                }
                else
                {
-                    iRaffleRepository.save(raffle);
+
+                    iRaffleRepository.save(modelMapper.map(raffleDTO, Raffle.class));
                     return "Raffle was saved";
                }
 

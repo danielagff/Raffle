@@ -1,19 +1,20 @@
 package com.rifa.Model.DTO;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+
 @Getter @Setter @NoArgsConstructor
-public class RaffleDTO {
+public class LuckyTicketDTO {
 
-    private String raffleName;
+    private String ticketOwner;
 
-    private BigDecimal award;
+    private Integer quantityBought;
 
-    private BigDecimal numberPrice;
+    private String luckyNumber;
 
-    private String raffleDescription;
+    private BigDecimal ticketPrice;
+
 }

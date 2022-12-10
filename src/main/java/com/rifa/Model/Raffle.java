@@ -30,7 +30,7 @@ public class Raffle {
     @Column(name = "Raffle_Description")
     private String raffleDescription;
 
-    @Column(name = "Raffle_Status", nullable = false)
+    @Column(name = "Raffle_Status")
     private String raffleStatus;
 
     @Column(name = "Winner_Name")

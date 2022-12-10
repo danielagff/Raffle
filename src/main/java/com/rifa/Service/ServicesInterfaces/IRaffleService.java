@@ -9,5 +9,5 @@ public interface IRaffleService {
 
     List<RaffleDTO> findAllRaffles() throws Exception;
 
-    String createRaffles(Raffle raffle);
+    String createRaffles(RaffleDTO raffleDTO);
 }
