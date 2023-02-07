@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
+
 @Getter @Setter @NoArgsConstructor
 public class RaffleDTO {
 
@@ -15,5 +17,9 @@ public class RaffleDTO {
 
     private BigDecimal numberPrice;
 
+    private Integer numberTicketsQuantity;
+
     private String raffleDescription;
+
+    private List<LuckyTicketDTO> luckyTicketDTOS;
 }

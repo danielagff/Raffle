@@ -1,12 +1,15 @@
 package com.rifa.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.rifa.Model.DTO.LuckyTicketDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "Tb_Raffle_143")
@@ -33,7 +36,17 @@ public class Raffle {
     @Column(name = "Raffle_Status")
     private String raffleStatus;
 
-    @Column(name = "Winner_Name")
+    @Column(name = "Number_Ticket_Quantity")
+    private Integer numberTicketsQuantity;
+
+    @Column(name = "Winner_name")
     private String winnerName;
+
+    @Column(name = "Winner_Ticket")
+    private String winnerTicket;
+
+    @OneToMany(mappedBy = "raffle")
+    @JsonIgnoreProperties("raffle")
+    private List<LuckyTicket> luckyTicketList;
 
 }

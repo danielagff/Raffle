@@ -3,6 +3,7 @@ package com.rifa.Service;
 import com.rifa.Model.DTO.RaffleDTO;
 import com.rifa.Model.Raffle;
 import com.rifa.Repository.IRaffleRepository;
+import com.rifa.Service.ServicesInterfaces.ILuckyTicketService;
 import com.rifa.Service.ServicesInterfaces.IRaffleService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -20,6 +21,9 @@ public class RaffleService implements IRaffleService {
 
      @Autowired
      private ModelMapper modelMapper;
+
+     @Autowired
+     private ILuckyTicketService iLuckyTicketService;
 
      @Override
      public List<RaffleDTO> findAllRaffles() throws Exception {
@@ -49,10 +53,16 @@ public class RaffleService implements IRaffleService {
                {
 
                     iRaffleRepository.save(modelMapper.map(raffleDTO, Raffle.class));
+
+                    Long idByRaffleName = iRaffleRepository.getIdByRaffleName(raffleDTO.getRaffleName());
+
+                    if(idByRaffleName != null)
+                    {
+                         iLuckyTicketService.createLuckyTicket(idByRaffleName);
+                    }
+
                     return "Raffle was saved";
                }
-
-
           }
           catch (Exception e)
           {

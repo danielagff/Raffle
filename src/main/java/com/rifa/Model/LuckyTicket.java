@@ -1,5 +1,6 @@
 package com.rifa.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Tb_LuckyTicket")
+@Table(name = "Tb_lucky_ticket_0263")
 @Getter @Setter @NoArgsConstructor
 public class LuckyTicket {
 
@@ -28,6 +29,16 @@ public class LuckyTicket {
 
     @Column(name = "Ticket_Price")
     private BigDecimal ticketPrice;
+
+    @Column(name = "Payment_Status")
+    private String PaymentStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "Id_Raffle", nullable = false)
+    @JsonIgnoreProperties("luckyTicketList")
+    private Raffle raffle;
+
+    //I need reference this class with Raffle class, each luckyTicket need to have one Raffle
 
 
 }
